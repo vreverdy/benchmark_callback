@@ -6,10 +6,10 @@
 // Preprocessor
 #include <cstdlib>
 #include <utility>
+#include <functional>
 
 // Benchmark function
-template <class T>
-int benchmark(int count, int size, T&& callback)
+int benchmark(int count, int size, const std::function<int(int, int)>& callback)
 {
   // Declares variables
   int* array = (int*)(malloc(size*sizeof(int)));
@@ -21,7 +21,7 @@ int benchmark(int count, int size, T&& callback)
   // Calls the callbacks on each element of the array and loops over it
   for (counter = 0; counter < count; ++counter) {
     for (index = 1; index < size; ++index) {
-      array[index] = std::forward<T>(callback)(array[index - 1], array[index]);
+      array[index] = callback(array[index - 1], array[index]);
     }
   }
     
