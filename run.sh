@@ -15,6 +15,9 @@ echo $time_cc
 time_cpp=$(time -p ./callback_cpp $count $size 2>&1)
 time_cpp=$(echo $time_cpp | cut -d' ' -f4)
 echo $time_cpp
+time_cxx=$(time -p ./callback_cxx $count $size 2>&1)
+time_cxx=$(echo $time_cxx | cut -d' ' -f4)
+echo $time_cxx
 #time_py=$(time -p python3 callback.py $count $size 2>&1)
 #time_py=$(echo $time_py | cut -d' ' -f4)
 #echo $time_py
